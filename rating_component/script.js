@@ -32,4 +32,9 @@ document.querySelectorAll(".item").forEach((item) => {
 
     currentValue = parseInt(pos) + 1;
   });
+
+  item.addEventListener("click", (e) => {
+    const pos = item.getAttribute("data-pos");
+    currentValue = parseInt(pos) + 1;
+  });
 });
