@@ -1,6 +1,7 @@
 const api_key = "24e4c93b452fd29f14907d4b867e9b0f";
 const dif_kelvin = 273.15;
 const url_base = "https://api.openweathermap.org/data/2.5/weather";
+const icon_url = "https://openweathermap.org/img/wn/";
 
 const button = document.getElementById("botonBusqueda");
 const input = document.querySelector("#ciudadEntrada");
@@ -24,6 +25,7 @@ function show_data({ name, main, weather }) {
 
   const { temp, feels_like, temp_max, temp_min, pressure, humidity } = main;
   const description = weather[0].description;
+  const icon = weather[0].icon;
 
   const title = document.createElement("h2");
   title.textContent = name;
@@ -44,11 +46,15 @@ function show_data({ name, main, weather }) {
   const temp_description = document.createElement("p");
   temp_description.textContent = description;
 
+  const icon_info = document.createElement("img");
+  icon_info.src = `${icon_url}${icon}@2x.png`;
+
   datos_clima.appendChild(title);
   datos_clima.appendChild(temp_info);
   datos_clima.appendChild(more_temp_info);
   datos_clima.appendChild(other_weather_info);
   datos_clima.appendChild(temp_description);
+  datos_clima.appendChild(icon_info);
 }
 
 function conversor_temp(temp) {
